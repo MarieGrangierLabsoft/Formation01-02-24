@@ -1,6 +1,6 @@
 <template>
     <div id="login-form">
-        <form v-if="loggedIn === false" v-on:submit.prevent="doLoggedIn">
+        <form v-if="isLogged === false" v-on:submit.prevent="doLoggedIn">
             <h1>{{ title }}</h1>
             <p>Remplissez ce formulaire pour vous connecter.</p>
             <hr />
@@ -11,50 +11,34 @@
                 required />
             <p><button type="submit">Se connecter</button></p>
         </form>
-        <ul class="films" v-else>
-            <li class="film card" v-for="(thisFilm, index) in films" :key="index">
-
-                <img class="poster" :src=thisFilm.poster />
-                <p class="title">
-                    {{ thisFilm.title }}
-                    <span class="rating">{{ getScore(thisFilm.metascore) }}</span>
-                </p>
-                <dl>
-                    <dt>Release date</dt>
-                    <dd>{{ thisFilm.released }}</dd>
-                    <dt>Director</dt>
-                    <dd>{{ thisFilm.director }}</dd>
-                    <dt>Actors</dt>
-                    <dd>{{ thisFilm.actors }}</dd>
-                </dl>
-                <p class="plot">
-                    {{ thisFilm.plot }}
-                </p>
-            </li>
-        </ul>
     </div>
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 export default {
     name: 'LoginForm',
     data() {
         return {
             password: "password",
             email: "VotreEmail@votreBoite.fr",
-            loggedIn: false,
         }
-
     },
 
     props: {
-        title: String,
+        title: String
+    },
+
+    computed: {
+        ...mapState(['isLogged'])
     },
 
     methods: {
         doLoggedIn() {
-            this.loggedIn = true;
+            this.$store.commit("changeLogg");       
         }
-    }
+    },
 }
 </script>
