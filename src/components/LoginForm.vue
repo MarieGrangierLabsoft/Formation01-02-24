@@ -37,7 +37,8 @@ export default {
 
     methods: {
         doLoggedIn() {
-            this.$store.commit("changeLogg");       
+            this.$store.commit("changeLogg");  
+            this.$router.push('/searchFilm');     
         }
     },
 }

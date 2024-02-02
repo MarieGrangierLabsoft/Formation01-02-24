@@ -28,6 +28,7 @@
             </li>
         </ul>
     </div>
+    <div v-else>Connectez vous</div>
 </template>
 
 <script>
