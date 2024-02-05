@@ -27,6 +27,11 @@ const routes = [
     path: '/connection',
     name: 'connection',
     component: () => import('../components/LoginForm.vue')    
+  },
+  {
+    path: '/axios',
+    name: 'axios',
+    component: () => import('../components/ToUseAxios.vue')    
   }
 ]
 

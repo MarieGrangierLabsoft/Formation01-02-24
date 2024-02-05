@@ -1,23 +1,36 @@
 <template>
-  <div>
-    <LoginForm title="Authentification" />
-    <SearchFilm />
-  </div> 
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> | 
+      <router-link to="/about">About</router-link> | 
+      <router-link to="/searchFilm">Search Film</router-link> | 
+      <router-link to="/connection">Loggin</router-link> | 
+      <router-link to="/axios">Axios</router-link> | 
+    </nav>
+    <router-view/>
+  </div>
 </template>
 
-<script>
-import LoginForm from './components/LoginForm.vue';
-import SearchFilm from './components/SearchFilm.vue';
-
-export default {
-  name: 'App',
-  components: {
-    LoginForm,
-    SearchFilm
-  }
-}
-</script>
-
 <style>
-  @import './assets/base.css';
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+@import './assets/base.css';
 </style>
